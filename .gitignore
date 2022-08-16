@@ -1,0 +1,4 @@
+dectalk/
+pkg/
+src/
+*.pkg.tar.zst
