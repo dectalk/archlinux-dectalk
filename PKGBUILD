@@ -1,13 +1,10 @@
-pkgname=dectalk-git
-_pkgname=dectalk
+pkgname=dectalk
 pkgver=4.62
 pkgrel=1
 pkgdesc="Text-to-speech software by Force/Fonix/SpeechFX (master branch)"
 arch=("x86_64")
 url="https://github.com/dectalk/dectalk"
 options=(!lto)
-conflicts=("dectalk")
-provides=("dectalk")
 license=("custom")
 depends=()
 optdepends=()
@@ -19,15 +16,15 @@ source=("dectalk::git+https://github.com/dectalk/dectalk.git#branch=install")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$_pkgname/src"
+  cd "$srcdir/$pkgname/src"
   autoreconf -i
   ./configure
   make -j1
 }
 
 package() {
-  cd "$srcdir/$_pkgname/src"
+  cd "$srcdir/$pkgname/src"
   make DESTDIR="$pkgdir" install
 
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/$_pkgname/LICENCE"
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/$pkgname/LICENCE"
 }
